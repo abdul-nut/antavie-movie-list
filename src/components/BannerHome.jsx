@@ -34,7 +34,9 @@ const BannerHome = () => {
     return (
         <section className="w-full h-full">
             <div className="flex min-h-full max-h-[95vh] overflow-hidden">
-                {bannerData.map((data, index) => {
+                {bannerData.map((data) => {
+                    console.log(data);
+                    
                     return (
                         <div key={data.id}
                             className="min-w-full min-h-[450px] lg:min-h-full overflow-hidden relative group transition-all"

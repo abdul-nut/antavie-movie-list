@@ -1,9 +1,16 @@
-import React from 'react'
+import { useParams } from "react-router-dom";
+import PersonDetailPage from "./PersonDetailsPage";
+import MovieTvDetailPage from "./MovieTvDetailsPage";
 
 const DetailsPage = () => {
-  return (
-    <div>DetailsPage</div>
-  )
-}
+  const { explore } = useParams();
 
-export default DetailsPage
+  if (explore === "person") {
+    return <PersonDetailPage />;
+  }
+  if (explore === "movie" || explore === "tv") {
+    return <MovieTvDetailPage />;
+  }
+};
+
+export default DetailsPage;

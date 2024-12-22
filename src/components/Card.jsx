@@ -1,13 +1,23 @@
 import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import moment from 'moment'
+import { Link } from 'react-router-dom'
 
-const Card = ({ data, trending, index }) => {
+const Card = ({ data, trending, index, media_type }) => {
   const imageUrl = useSelector(state => state.movieData.imageUrl)
   const dateFormat = 'MMM Do YYYY'
+  const mediaType = data.media_type ?? media_type
   return (
-    <div className='w-full min-w-[230px] max-w-[230px] h-80 overflow-hidden rounded relative'>
-      <img src={imageUrl + data?.poster_path} className="w-full" alt="" />
+    <Link to={"/" + mediaType + "/" + data.id} className='w-full min-w-[230px] max-w-[230px] h-80 overflow-hidden block rounded relative hover:scale-105 transition-all'>
+      {
+        data?.poster_path ? (
+          <img src={imageUrl + data?.poster_path} className="w-full" alt="" />
+        ) : (
+          <div className='bg-neutral-600 h-full w-full flex justify-center items-center '>
+            Image Not Found
+          </div>
+        )
+      }
       <div className='absolute top-4'>
         {trending && (
           <div className='py-1 px-4 backdrop-blur-3xl rounded-r-full bg-black/60 overflow-hidden'>
@@ -25,14 +35,15 @@ const Card = ({ data, trending, index }) => {
             Rating: {Number(data?.vote_average).toFixed(1)}</p>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
 Card.propTypes = {
   data: PropTypes.object.isRequired,
   trending: PropTypes.bool,
-  index: PropTypes.number
+  index: PropTypes.number,
+  media_type: PropTypes.string
 }
 
 export default Card

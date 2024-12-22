@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import Footer from './components/Footer.jsx';
-import Header from './components/header.jsx';
+import Header from './components/Header.jsx';
 import MobileNavigation from './components/MobileNavigation.jsx';
 import axios from 'axios';
 import { useEffect } from 'react';
@@ -38,7 +38,7 @@ function App() {
   return (
     <main className='pb-14 lg:pb-0'>
       <Header />
-      <div className=''>
+      <div className='min-h-[90vh]'>
         <Outlet />
       </div>
       <Footer />

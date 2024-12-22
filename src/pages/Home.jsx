@@ -1,27 +1,24 @@
 import { useSelector } from "react-redux"
 import BannerHome from "../components/BannerHome"
-import Card from "../components/Card"
+import HorizontalScrollCard from "../components/HorizontalScrollCard"
+import UseFetch from "../hooks/UseFetch"
 
 const Home = () => {
     const trendingData = useSelector(state => state.movieData.bannerData)
+    const { data: nowPlayingData } = UseFetch('/movie/now_playing')
+    const { data: topRatedData } = UseFetch('/movie/top_rated')
+    const { data: upcomingData } = UseFetch('/movie/upcoming')
+    const { data: popularTVShowsData } = UseFetch('/tv/popular')
+
+
     return (
         <div>
             <BannerHome />
-            <div className="container mx-auto px-3 my-10">
-                <h2 className="text-xl lg:text-2xl font-bold mb-3 text-white">Trending Show</h2>
-                <div className="overflow-hidden">
-                    <div
-                        className="grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] grid-flow-col gap-6 overflow-x-scroll">
-                        {
-                            trendingData?.map((data, index) => {
-                                return (
-                                    <Card key={data.id} data={data} index={index + 1} trending={true} />
-                                )
-                            })
-                        }
-                    </div>
-                </div>
-            </div>
+            <HorizontalScrollCard data={trendingData} heading="Trending Now" trending={true} isArtisCard={false} />
+            <HorizontalScrollCard data={nowPlayingData} heading="Now Playing" trending={false} media_type={"movie"} isArtisCard={false} />
+            <HorizontalScrollCard data={topRatedData} heading="Top Rated" trending={false} media_type={"movie"} isArtisCard={false} />
+            <HorizontalScrollCard data={upcomingData} heading="Upcoming" trending={false} media_type={"movie"} isArtisCard={false} />
+            <HorizontalScrollCard data={popularTVShowsData} heading="Popular Tv Shows" trending={false} media_type={"tv"} isArtisCard={false} />
         </div>
     )
 }

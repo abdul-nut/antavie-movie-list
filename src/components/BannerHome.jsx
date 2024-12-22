@@ -28,17 +28,15 @@ const BannerHome = () => {
             }
         }, 5000)
         return () => clearInterval(interval)
-    }, [bannerData])
+    }, [bannerData, currentImage])
 
 
     return (
-        <section className="w-full h-full">
+        <section className="w-full h-full z-40">
             <div className="flex min-h-full max-h-[95vh] overflow-hidden">
-                {bannerData.map((data) => {
-                    console.log(data);
-                    
+                {bannerData.map((data, index) => {
                     return (
-                        <div key={data.id}
+                        <div key={data.id + "bannerHome" + index}
                             className="min-w-full min-h-[450px] lg:min-h-full overflow-hidden relative group transition-all"
                             style={{ transform: `translateX(-${currentImage * 100}%)` }}>
                             <div className="h-full w-full">

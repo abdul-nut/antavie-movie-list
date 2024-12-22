@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigate } from "react-router-dom"
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom"
 import logo from "../assets/logo.png"
 import userLogo from "../assets/user.png"
 import { IoSearchOutline } from "react-icons/io5";
@@ -6,9 +6,10 @@ import { useEffect, useState } from "react";
 import { navigation } from "../contans/navigation";
 
 const Header = () => {
-  const [searchInput, setSearchInput] = useState('')
+  const location = useLocation()
+  const removeSpace = location?.search?.slice(7)?.split("%20")?.join(" ")
+  const [searchInput, setSearchInput] = useState(removeSpace)
   const navigate = useNavigate()
-
 
   useEffect(() => {
     if (searchInput) {
@@ -19,9 +20,9 @@ const Header = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
   }
-  return (  
-    <header className='fixed top-0 w-full h-16 bg-neutral-600 bg-opacity-75 z-40'>
-      <div className='container mx-auto px-2 flex items-center h-full'>
+  return (
+    <header className='fixed top-0 w-full h-16 bg-black bg-opacity-75 z-40'>
+      <div className='container mx-auto px-1 flex items-center h-full'>
         <Link to={"/"}>
           <img src={logo} alt="logo" width={50} />
         </Link>
@@ -45,7 +46,7 @@ const Header = () => {
                 onChange={e => setSearchInput(e.target.value)}
                 value={searchInput}
               />
-              <button className="text-2xl text-white">
+              <button className="text-2xl text-white hidden lg:block">
                 <IoSearchOutline />
               </button>
             </form>

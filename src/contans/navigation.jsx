@@ -1,7 +1,7 @@
 import { MdHomeFilled } from "react-icons/md";
 import { PiTelevisionFill } from "react-icons/pi";
 import { MdLocalMovies } from "react-icons/md";
-import { IoSearchOutline } from "react-icons/io5";
+import { IoPersonCircleOutline, IoSearchOutline } from "react-icons/io5";
 
 export const navigation = [
     {
@@ -13,8 +13,13 @@ export const navigation = [
         label: "Movies",
         href: "movie",
         icons: <MdLocalMovies />
+    },
+    {
+        label: "Popular Person",
+        href: "person",
+        icons: <IoPersonCircleOutline />
     }
-]
+];
 
 export const mobileNavigation = [
     {
@@ -28,4 +33,4 @@ export const mobileNavigation = [
         href: "/search",
         icons: <IoSearchOutline />
     }
-]
+];

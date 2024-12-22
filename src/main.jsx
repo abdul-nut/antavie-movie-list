@@ -9,6 +9,8 @@ import SearchPage from './pages/SearchPage';
 import axios from 'axios';
 import { Provider } from 'react-redux';
 import { store } from './store/store';
+import PersonDetailPage from './pages/PersonDetailsPage';
+import MovieTvDetailPage from './pages/MovieTvDetailsPage';
 
 const router = createBrowserRouter([
   {
@@ -21,19 +23,30 @@ const router = createBrowserRouter([
       },
       {
         path: ":explore",
-        element: <ExplorePage />
+        element: <ExplorePage />,
       },
       {
         path: ":explore/:id",
-        element: <DetailsPage />
+        element: <DetailsPage />,
+        children: [
+          {
+            path: "person",
+            element: <PersonDetailPage />,
+          },
+          {
+            path: "movie-tv",
+            element: <MovieTvDetailPage />,
+          },
+        ],
       },
       {
         path: "search",
-        element: <SearchPage />
-      }
-    ]
-  }
+        element: <SearchPage />,
+      },
+    ],
+  },
 ]);
+
 
 // Konfigurasi Axios dengan variabel lingkungan yang ada
 axios.defaults.baseURL = "https://api.themoviedb.org/3";

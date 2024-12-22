@@ -18,8 +18,6 @@ const SearchPage = () => {
           page: page
         }
       })
-      console.log(response);
-      console.log(location?.search?.slice(7));
 
       setData((pre) => {
         return [
@@ -54,8 +52,6 @@ const SearchPage = () => {
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
   }, [])
-
-  console.log("location");
 
   return (
     <div className='py-16'>

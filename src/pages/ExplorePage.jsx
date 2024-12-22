@@ -10,7 +10,6 @@ const ExplorePage = () => {
   const [data, setData] = useState([])
   const [totalPage, setTotalPage] = useState(0)
 
-  console.log("params", params.explore);
 
   const fetchData = async () => {
     try {

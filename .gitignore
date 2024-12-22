@@ -7,18 +7,90 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Dependency directories
+node_modules/
+bower_components/
 
-# Editor directories and files
+# Build directories
+dist/
+dist-ssr/
+build/
+.cache/
+out/
+.next/
+.nuxt/
+.svelte-kit/
+.vite/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# System files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Editor settings
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+
+# Package manager lock files (optional, keep only one lock file)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Coverage reports
+coverage/
+*.lcov
+
+# Temp files
+*.tmp
+*.temp
+*.log
+~$*
+
+# Test outputs
+.jest/
+*.snap
+reports/
+
+# Storybook
+.storybook/
+storybook-static/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.Dockerfile
+docker-compose.yml
+node_modules/.cache/
+
+# Static assets cache
+.cache-loader/
+.eslintcache
+.stylelintcache
+*.sass-cache/
+
+# Framework-specific (React, Next.js, Vue, etc.)
+.next/
+.nuxt/
+.vite/
+.svelte-kit/
+server/
+prerendered/
+
+# Miscellaneous
+*.pid
+*.seed
+*.pid.lock
+yarn-error.log
+.pnp
+.pnp.js
